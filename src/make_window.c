@@ -82,3 +82,10 @@ void make_window(void)
     sfRenderWindow_destroy(window);
 }
 
+void refresh_buffer(framebuffer_t *framebuffer)
+{
+    for (int index1 = 0; index1 < 1080; index1++) {
+        for (int index2 = 0; index2 < 1920; index2++) 
+            my_put_pixel(framebuffer, index2, index1, sfBlack);
+    }
+}

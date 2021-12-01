@@ -33,3 +33,4 @@ int time_circle(framebuffer_t *framebuffer, int x, int y, int rad, int index);
 void my_put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y, sfColor color);
 void make_diagonal(framebuffer_t *framebuffer, unsigned int size, unsigned int x, unsigned int y, sfColor color);
 int bubble_pop(framebuffer_t *framebuffer);
+void refresh_buffer(framebuffer_t *framebuffer);

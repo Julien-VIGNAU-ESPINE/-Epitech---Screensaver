@@ -42,6 +42,36 @@ int time_circle(framebuffer_t *framebuffer, int x, int y, int rad, int index)
     return 0;
 }
 
+int time_circle_refresh(framebuffer_t *framebuffer, int x, int y, int rad, int index)
+{
+    sfClock *clock;
+    sfTime time;
+    float seconds;
+    int nbr_bubble = 0;
+
+    clock = sfClock_create();
+    time = sfClock_getElapsedTime(clock);
+    seconds = time.microseconds / 1000000.0;
+    if (seconds > 0.000001)
+    {
+        if (index % 50 == 0)
+            refresh_buffer(framebuffer);
+        else if (index % 10 == 2 || index % 10 == 3 || index % 10 == 4)
+            draw_circle(framebuffer, x + index * index, y, rad, sfGreen);
+        else
+            draw_circle(framebuffer, x + index * index, y, rad, sfBlue);  
+        sfClock_restart(clock);
+    }
+    return 0;
+}
+
+int bubble_pop_refresh(framebuffer_t *framebuffer)
+{
+    for (int index = 0; index < 1400; index++)
+        time_circle_refresh(framebuffer, 0, 0, 10, index);
+    return 0;
+}
+
 int bubble_pop(framebuffer_t *framebuffer)
 {
     for (int index = 0; index < 2000000; index++)
