@@ -10,7 +10,9 @@ EXEC	=	my_screensaver
 PROG	=	main.c				\
 		src/make_window.c		\
 		src/basics.c			\
-		src/circle.c
+		src/circle.c			\
+		src/square.c			\
+		src/choice.c
 
 LIB	=	libmy.a
 

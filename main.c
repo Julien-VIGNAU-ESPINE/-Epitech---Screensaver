@@ -7,9 +7,10 @@
 
 #include "include/includes.h"
 #include "lib/my/my.h"
+#include <stdio.h>
 
-int main(void)
+int main(int argc, char **argv)
 {
-    make_window();
+    choice(argv[1][0]);
     return 0;
 }
