@@ -24,7 +24,8 @@ struct framebuffer {
 typedef struct framebuffer framebuffer_t;
 framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
 void framebuffer_destroy(framebuffer_t *framebuffer);
-void my_put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y, sfColor color);
+void my_put_pixel(framebuffer_t *framebuffer, unsigned int x
+                  , unsigned int y, sfColor color);
 #endif    /* FRAMEBUFFER_H_ */
 /*
 ** end of framebuffer.h
