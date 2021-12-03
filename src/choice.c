@@ -15,8 +15,8 @@ void choice(char nb)
         make_window2();
     if (nb == '3')
         make_window3();
-    else
-        puts("LOUTRE");
+    if (nb == '4')
+        make_window4();
 }
 
 void make_window1(void)
@@ -107,6 +107,39 @@ void make_window3(void)
                 sfRenderWindow_close(window);
         }
         square_pop(framebuffer);
+        sfTexture_updateFromPixels(texture, framebuffer->pixels, 1920, 1080, 0, 0);
+        sfRenderWindow_clear(window, sfBlack);
+        sfRenderWindow_drawSprite(window, sprite, NULL);
+        sfRenderWindow_display(window);
+    }
+    framebuffer_destroy(framebuffer);
+    sfSprite_destroy(sprite);
+    sfTexture_destroy(texture);
+    sfRenderWindow_destroy(window);
+}
+
+void make_window4(void)
+{
+    sfVideoMode mode = {1920, 1080, 32};
+    sfRenderWindow* window;
+    sfTexture* texture;
+    sfSprite* sprite;
+    sfEvent event;
+    framebuffer_t *framebuffer;
+
+    window = sfRenderWindow_create(mode, "SFML window", sfResize | sfClose, NULL);
+    framebuffer = framebuffer_create(1920, 1080);
+    texture = sfTexture_create(1920, 1080);
+    sprite = sfSprite_create();
+    sfSprite_setTexture(sprite, texture, sfTrue);
+    sfRenderWindow_setFramerateLimit(window, 60);
+    while (sfRenderWindow_isOpen(window)) {
+        while (sfRenderWindow_pollEvent(window, &event))
+        {
+            if (event.type == sfEvtClosed)
+                sfRenderWindow_close(window);
+        }
+        flag(framebuffer);
         sfTexture_updateFromPixels(texture, framebuffer->pixels, 1920, 1080, 0, 0);
         sfRenderWindow_clear(window, sfBlack);
         sfRenderWindow_drawSprite(window, sprite, NULL);
