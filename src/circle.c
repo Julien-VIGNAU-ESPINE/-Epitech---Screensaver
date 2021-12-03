@@ -67,7 +67,7 @@ int time_circle_refresh(framebuffer_t *framebuffer, int x, int y, int rad, int i
 int bubble_pop_refresh(framebuffer_t *framebuffer)
 {
     for (int index = 0; index < 1400; index++)
-        time_circle_refresh(framebuffer, 0, 0, 10, index);
+        time_circle_refresh(framebuffer, 0, 0, 50, index);
     return 0;
 }
 
