@@ -8,7 +8,8 @@
 #include <math.h>
 #include "../include/includes.h"
 
-int draw_circle(framebuffer_t *framebuffer, int x, int y, int rad, sfColor color)
+int draw_circle(framebuffer_t *framebuffer, int x, int y
+                , int rad, sfColor color)
 {
         for (int index = y - rad; index <= y + rad; index++) {
                 for (int index2 = x - rad; index2 <= x + rad; index2++) {
@@ -41,7 +42,8 @@ int time_circle(framebuffer_t *framebuffer, int x, int y, int rad, int index)
     return 0;
 }
 
-int time_circle_refresh(framebuffer_t *framebuffer, int x, int y, int rad, int index)
+int time_circle_refresh(framebuffer_t *framebuffer, int x, int y
+                        , int rad, int index)
 {
     sfClock *clock;
     sfTime time;
@@ -58,7 +60,7 @@ int time_circle_refresh(framebuffer_t *framebuffer, int x, int y, int rad, int i
         else if (index % 10 == 2 || index % 10 == 3 || index % 10 == 4)
             draw_circle(framebuffer, x + index * index, y, rad, sfGreen);
         else
-            draw_circle(framebuffer, x + index * index, y, rad, sfBlue);  
+            draw_circle(framebuffer, x + index * index, y, rad, sfBlue);
         sfClock_restart(clock);
     }
     return 0;

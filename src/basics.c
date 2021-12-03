@@ -7,7 +7,8 @@
 
 #include "../include/includes.h"
 
-void my_put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y, sfColor color)
+void my_put_pixel(framebuffer_t *framebuffer, unsigned int x
+                  , unsigned int y, sfColor color)
 {
     int i = (x + framebuffer->width * y) * 4;
     framebuffer->pixels[i] = color .r;
@@ -16,7 +17,8 @@ void my_put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y, sf
     framebuffer->pixels[i + 3] = color .a;
 }
 
-void make_diagonal(framebuffer_t *framebuffer, unsigned int size, unsigned int x, unsigned int y, sfColor color)
+void make_diagonal(framebuffer_t *framebuffer, unsigned int size
+                   , unsigned int x, unsigned int y, sfColor color)
 {
     for (int index = 0; index < size; index++)
         my_put_pixel(framebuffer, (x + index), (y + index), color);

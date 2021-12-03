@@ -9,7 +9,8 @@
 #include "../include/includes.h"
 #include <stdio.h>
 
-void make_square(framebuffer_t *framebuffer, unsigned int size, unsigned int x, unsigned int y, sfColor color)
+void make_square(framebuffer_t *framebuffer, unsigned int size
+                 , unsigned int x, unsigned int y, sfColor color)
 {
     int index2 = 0;
     int area = size * size;
@@ -79,7 +80,7 @@ int time_square2(framebuffer_t *framebuffer, int x, int y, int index)
 
 int flag(framebuffer_t *framebuffer)
 {
-    for (int index = 0; index < 2000000; index++)                                                                    
-        time_square2(framebuffer, 0, 0, index);                                                                    
-    return 0; 
+    for (int index = 0; index < 2000000; index++)
+        time_square2(framebuffer, 0, 0, index);
+    return 0;
 }

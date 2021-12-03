@@ -11,7 +11,7 @@
 #include "../include/includes.h"
 
 /*
-** framebuffer.h                                                                                                     
+** framebuffer.h
 */
 #ifndef FRAMEBUFFER_H_
 #define FRAMEBUFFER_H_
@@ -26,8 +26,8 @@ framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
 void framebuffer_destroy(framebuffer_t *framebuffer);
 void my_put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y, sfColor color);
 #endif    /* FRAMEBUFFER_H_ */
-/*                                                                                                                   
-** end of framebuffer.h                                                                                             
+/*
+** end of framebuffer.h
 */
 
 framebuffer_t *framebuffer_create(unsigned int width, unsigned int height)
@@ -52,7 +52,7 @@ void framebuffer_destroy(framebuffer_t *framebuffer)
 void refresh_buffer(framebuffer_t *framebuffer)
 {
     for (int index1 = 0; index1 < 1080; index1++) {
-        for (int index2 = 0; index2 < 1920; index2++) 
+        for (int index2 = 0; index2 < 1920; index2++)
             my_put_pixel(framebuffer, index2, index1, sfBlack);
     }
 }
