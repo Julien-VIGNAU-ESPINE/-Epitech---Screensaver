@@ -15,7 +15,7 @@ static int my_cond(int cmpt, char const *str)
             result *= -1;
             return result;
         }
-        if (result + unit >= 2147483646 || result + unit <= -2147483647){
+        if (result + unit >= 2147483646 || result + unit <= -2147483647) {
             return 0;
         }
         result += unit * (str[cmpt] - 48);

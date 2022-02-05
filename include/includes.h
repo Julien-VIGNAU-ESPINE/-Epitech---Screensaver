@@ -1,13 +1,10 @@
 /*
-** EPITECH PROJECT, 2021
-** includes
+** EPITECH PROJECT, 2022
+** inlcudes.h
 ** File description:
 ** includes
 */
 
-/*
-** framebuffer.h
-*/
 #ifndef FRAMEBUFFER_H_
 #define FRAMEBUFFER_H_
 #include <SFML/Graphics.h>
@@ -27,26 +24,47 @@ void my_put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y
 ** end of framebuffer.h
 */
 
-framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
-void framebuffer_destroy(framebuffer_t *framebuffer);
-void make_window1(void);
-void make_window2(void);
-void make_window3(void);
-void make_window4(void);
-int draw_circle(framebuffer_t *framebuffer, int x, int y, int rad
-                , sfColor color);
-int time_circle(framebuffer_t *framebuffer, int x, int y, int rad, int index);
-void my_put_pixel(framebuffer_t *framebuffer, unsigned int x, unsigned int y
-                  , sfColor color);
-void make_diagonal(framebuffer_t *framebuffer, unsigned int size
-                   , unsigned int x, unsigned int y, sfColor color);
-int bubble_pop(framebuffer_t *framebuffer);
-int bubble_pop_refresh(framebuffer_t *framebuffer);
-void refresh_buffer(framebuffer_t *framebuffer);
-void make_square(framebuffer_t *framebuffer, unsigned int size, unsigned int x
-                 , unsigned int y, sfColor color);
-int square_pop(framebuffer_t *framebuffer);
-int time_square(framebuffer_t *framebuffer, int x, int y, int rad, int index);
-void choice(char nb);
-int time_square2(framebuffer_t *framebuffer, int x, int y, int index);
-int flag(framebuffer_t *framebuffer);
+#ifndef includes
+#define includes
+
+    #include <SFML/Graphics.h>
+    #include <stdlib.h>
+    #include <stdio.h>
+    #include <math.h>
+    #include <SFML/System/Vector2.h>
+    #include <stddef.h>
+    #include <math.h>
+    #include <time.h>
+    #include "../lib/my/my.h"
+
+    sfRenderWindow *create_renderwindow(unsigned int x, unsigned int y
+    , unsigned int bpp, char *title);
+    void my_put_pixel(framebuffer_t *framebuffer, unsigned int x
+    , unsigned int y, sfColor color);
+    framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
+    void framebuffer_destroy(framebuffer_t *framebuffer);
+    int draw_circle(framebuffer_t *framebuffer, int x, int y
+                , int rad, sfColor color);
+    int make_square(framebuffer_t *framebuffer, unsigned int size
+                 , unsigned int x, unsigned int y, sfColor color);
+    int make_full_screen(framebuffer_t *framebuffer, sfColor color);
+    int make_window(char **argv);
+    int check_args(int argc, char **argv);
+    int print_screensavers(void);
+    int screen_loop(sfRenderWindow *wndw, sfEvent event, framebuffer_t *framebuffer
+    , sfTexture *texture, sfSprite *sprite, char **argv);
+    int count_time(sfClock *clock, char **argv, sfTexture *texture
+    , framebuffer_t *framebuffer, float seconds);
+    int choose_animation(char **argv, framebuffer_t *framebuffer
+, sfTexture *texture);
+int choose_animation2(char **argv, framebuffer_t *framebuffer
+, sfTexture *texture);
+int choose_animation3(char **argv, framebuffer_t *framebuffer
+, sfTexture *texture);
+int print_square(framebuffer_t *framebuffer, sfTexture *texture);
+int print_circle_or_square(framebuffer_t *framebuffer, sfTexture *texture);
+int change_all_color(framebuffer_t *framebuffer, sfTexture *texture);
+int print_fixed_circle(framebuffer_t *framebuffer, sfTexture *texture);
+int print_circle(framebuffer_t *framebuffer, sfTexture *texture);
+int analyse_events(sfEvent event, sfRenderWindow *wndw);
+#endif /* !includes */

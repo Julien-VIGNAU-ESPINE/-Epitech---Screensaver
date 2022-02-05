@@ -26,7 +26,7 @@ void printf1(char *var, va_list list, int index)
     if (var[index] == '%' && var[index + 1] == 's')
         my_putstr(va_arg(list, char *));
     if (var[index] == '%' && (var[index + 1] == 'd'
-                              || var[index + 1] == 'i'))
+    || var[index + 1] == 'i'))
         my_put_nbr(va_arg(list, int));
     if (var[index] == '%' && var[index + 1] == '%') {
         my_putchar('%');

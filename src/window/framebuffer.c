@@ -4,32 +4,13 @@
 ** File description:
 ** make the displayed window
 */
+#include "../../include/includes.h"
+
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include "../include/includes.h"
-
-/*
-** framebuffer.h
-*/
-#ifndef FRAMEBUFFER_H_
-#define FRAMEBUFFER_H_
-#include <SFML/Graphics.h>
-struct framebuffer {
-    unsigned int width;
-    unsigned int height;
-    sfUint8 *pixels;
-};
-typedef struct framebuffer framebuffer_t;
-framebuffer_t *framebuffer_create(unsigned int width, unsigned int height);
-void framebuffer_destroy(framebuffer_t *framebuffer);
-void my_put_pixel(framebuffer_t *framebuffer, unsigned int x
-                  , unsigned int y, sfColor color);
-#endif    /* FRAMEBUFFER_H_ */
-/*
-** end of framebuffer.h
-*/
 
 framebuffer_t *framebuffer_create(unsigned int width, unsigned int height)
 {
@@ -39,8 +20,8 @@ framebuffer_t *framebuffer_create(unsigned int width, unsigned int height)
     buffer->width = width;
     buffer->height = height;
     buffer->pixels = malloc(sizeof(sfUint8) * (width * height * 4));
-    for (int i = 0; i < (width * height * 4); i++)
-        buffer->pixels[i] = 0;
+    for (unsigned int index = 0; index < (width * height * 4); index += 1)
+        buffer->pixels[index] = 0;
     return buffer;
 }
 

@@ -1,70 +1,61 @@
 ##
 ## EPITECH PROJECT, 2021
-## Makefile
+## <DON'T FORGET TO PUT PROJECT NAME HERE!!!!>
 ## File description:
 ## Makefile
 ##
 
-EXEC	=	my_screensaver
 
-PROG	=	main.c				\
-		src/make_window.c		\
-		src/basics.c			\
-		src/circle.c			\
-		src/square.c			\
-		src/choice.c
+## Variable to be modified
+rm = rm -rf
 
-LIB	=	libmy.a
+TARGET = my_screensaver
 
-SRC	=	lib/my/my_compute_power_rec.c	\
-		lib/my/my_compute_square_root.c	\
-		lib/my/my_convert_base_min.c	\
-		lib/my/my_convert_base_maj.c	\
-		lib/my/my_getnbr.c		\
-		lib/my/my_isneg.c		\
-		lib/my/my_is_prime.c		\
-		lib/my/my_putchar.c		\
-		lib/my/my_put_nbr.c		\
-		lib/my/my_putstr.c		\
-		lib/my/my_printf.c		\
-		lib/my/my_revstr.c		\
-		lib/my/my_showmem.c		\
-		lib/my/my_showstr.c		\
-		lib/my/my_strcat.c		\
-		lib/my/my_strcmp.c		\
-		lib/my/my_strcpy.c		\
-		lib/my/my_strdup.c		\
-		lib/my/my_str_isalpha.c		\
-		lib/my/my_str_islower.c		\
-		lib/my/my_str_isnum.c		\
-		lib/my/my_str_isupper.c		\
-		lib/my/my_strlen.c		\
-		lib/my/my_strlowcase.c		\
-		lib/my/my_strncat.c		\
-		lib/my/my_strncmp.c		\
-		lib/my/my_strncpy.c		\
-		lib/my/my_strstr.c		\
-		lib/my/my_strupcase.c		\
-		lib/my/my_put_unnbr.c		
+CFLAGS = -Wextra -Wall -Iinclude
+
+LDFLAGS	=	-L./ -lmy -lcsfml-graphics -lcsfml-system -lm -lcsfml-window
+
+SRC	=	src/main.c \
+		src/window/create_window.c  \
+		src/window/framebuffer.c \
+		src/shapes/my_put_pixel.c \
+		src/shapes/circle.c \
+		src/shapes/square.c \
+		src/loop.c
 
 OBJ	=	$(SRC:.c=.o)
 
-$(EXEC): $(LIB) $(PROG)
-	gcc -o $(EXEC) $(PROG) -Iinclude/ -L. -lmy -lcsfml-graphics -lcsfml-system -lm
+LIB_MAKE_PATH	=	lib/my/
 
-$(LIB):	 $(OBJ)
-	ar rc ./$(LIB) $(OBJ)
-	rm -f $(OBJ)
+LIB	= libmy.a
 
-all: $(LIB)
+all:	$(LIB)	$(TARGET)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -c -o $@ $^\
+	&& printf "[\033[1;32mcompiled\033[0m] % 29s\n" $< |  tr ' ' '.'\
+	|| printf "[\033[1;31merror\033[0m] % 29s\n" $< |  tr ' ' '.'
+
+$(LIB):
+	@$(MAKE) -C $(LIB_MAKE_PATH)
+
+$(TARGET): $(OBJ)
+	@$(CC) -o $@ $^ $(LDFLAGS)
+	@echo -e "\e[1;34mFinished compiling $@\e[0m"
+
+PHONY:	all	fclean	clean	re
+
+debug: CFLAGS += -g3
+debug: clean all
 
 clean:
-	rm -f *~
-	rm -f $(OBJ)
+	@$(rm) $(OBJ)
+	@echo "Removed .o files"
+	@$(MAKE) -C $(LIB_MAKE_PATH) clean
 
 fclean: clean
-	rm -f $(OBJ)
-	rm -f ./lib/$(LIB)
-	rm -f $(EXEC)
+	@$(rm) $(TARGET)
+	@echo "Removed binary file"
+	@$(MAKE) -C $(LIB_MAKE_PATH) fclean
 
 re: fclean all
