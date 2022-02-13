@@ -30,7 +30,7 @@ int print_screensavers(void)
 int check_args(int argc, char **argv)
 {
     if (argc != 2) {
-        my_printf("Error: ./my_screensaver must take exactly one parameter.\n");
+        my_printf("Error: ./my_screensaver take exactly one parameter.\n");
         return 1;
     } if (argv[1][0] == '1' || argv[1][0] == '2' || argv[1][0] == '3'
     || argv[1][0] == '4' || argv[1][0] == '5')
